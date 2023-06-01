@@ -6,7 +6,8 @@ I am using Ros2 humble which is not fully supported by the main BT.cpp and BT.RO
 
 The only folders that you really need to be concerned with are in `bt_ros_tests` and `BehaviorTree.ROS2-humble` files, the BT.cpp should not be touched
 
-Within those files I am only really working with the services for now, so inside `BehaviorTree.ROS2-humble/include/behaviortree_ros2` is the `bt_service_node.hpp`. This could potentially be the place for error, as well as in `bt_ros_tests/src/bt_ros_test.cpp`
+Within those files I am only really working with the services for now, so inside `BehaviorTree.ROS2-humble/include/behaviortree_ros2` is the `bt_service_node.hpp`. This could potentially be the place for error, as well as in `bt_ros_tests/src/bt_ros_test.cpp`.
+The plugin `adding_service.cpp` can also be cause for concern for the issue
 
 I have a feeling the issue is with how I am passing my clients through into the service node however I haven't been able to confirm that.
 
