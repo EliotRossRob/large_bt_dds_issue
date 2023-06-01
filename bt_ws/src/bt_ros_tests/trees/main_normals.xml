@@ -1,0 +1,29 @@
+
+<root BTCPP_format="4">
+     <BehaviorTree ID="Adder">
+        <Sequence>
+            <!-- <SetBlackboard output_key="test" value="Test"/>
+            <Speak sentence="{test}"/> -->
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <Adding service_name="add_two_ints" number1="5" number2="4" sum="{sum}"/>
+            <!-- <Speak sentence="{sum}"/>
+            <Listen sum="{sum}"/>
+            <Speak sentence="Hello"/>
+            <Sleep name="sleepA" msec="2000"/>
+            <Listen sum="{sum}"/> -->
+            <!-- <Fallback>
+                <Timeout msec="1500">
+                   <Sleep name="sleepB" msec="2000"/>
+                </Timeout>
+            </Fallback> -->
+        </Sequence>
+     </BehaviorTree>
+ </root>
