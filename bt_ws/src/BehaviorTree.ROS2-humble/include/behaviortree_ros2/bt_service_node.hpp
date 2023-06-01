@@ -23,7 +23,6 @@
 #include "behaviortree_cpp/bt_factory.h"
 
 #include "behaviortree_ros2/ros_node_params.hpp"
-#include "behaviortree_ros2/service_clients_list.hpp"
 
 namespace BT
 {
@@ -165,52 +164,13 @@ template<class T> inline
   BT::ActionNodeBase(instance_name, conf),
   node_(params.nh),
   service_timeout_(params.server_timeout)
-  // client_map(arg)
 {
-  // RCLCPP_INFO( node_->get_logger(), "arg: %d", arg);
-  // check port remapping
+
   std::string service_name;
   getInput("service_name", service_name);
   auto client_it = arg->find(service_name);
   service_client_ = client_it->second;
-  // auto portIt = config().input_ports.find("service_name");
-  // if(portIt != config().input_ports.end())
-  // {
-  //   const std::string& bb_service_name = portIt->second;
 
-  //   if(bb_service_name.empty() || bb_service_name == "__default__placeholder__")
-  //   {
-  //     if(params.default_port_value.empty()) {
-  //       throw std::logic_error(
-  //         "Both [service_name] in the InputPort and the RosNodeParams are empty.");
-  //     }
-  //     else {
-  //       createClient(params.default_port_value);
-  //     }
-  //   }
-  //   else if(!isBlackboardPointer(bb_service_name))
-  //   {
-  //     // RCLCPP_INFO( node_->get_logger(), "Client");
-  //     // If the content of the port "service_name" is not
-  //     // a pointer to the blackboard, but a static string, we can
-  //     // create the client in the constructor.
-  //     createClient(bb_service_name);
-  //   }
-  //   else {
-  //     service_name_may_change_ = true;
-  //     // createClient will be invoked in the first tick().
-  //   }
-  // }
-  // else {
-
-  //   if(params.default_port_value.empty()) {
-  //     throw std::logic_error(
-  //       "Both [service_name] in the InputPort and the RosNodeParams are empty.");
-  //   }
-  //   else {
-  //     createClient(params.default_port_value);
-  //   }
-  // }
 }
 
 template<class T> inline
@@ -246,15 +206,6 @@ template<class T> inline
 template<class T> inline
   NodeStatus RosServiceNode<T>::tick()
 {
-  // RCLCPP_INFO(node_->get_logger(), "tick");
-  // First, check if the service_client_ is valid and that the name of the
-  // service_name in the port didn't change.
-  // otherwise, create a new client
-  // ServiceClients<T> service_clients;
-  // std::string service_name;
-  // getInput("service_name", service_name);
-  // auto client_it = client_map.find(service_name);
-  // service_client_ = client_it->second;
 
   bool found = service_client_->wait_for_service(service_timeout_);
   if(!found)
@@ -268,7 +219,7 @@ template<class T> inline
     RCLCPP_INFO(node_->get_logger(), "!service_client");
     std::string service_name;
     getInput("service_name", service_name);
-    // service_clients.service_clients[service_name] = service_client_;
+
     if(prev_service_name_ != service_name)
     {
       createClient(service_name);

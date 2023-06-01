@@ -18,7 +18,6 @@
 #include <string>
 #include <chrono>
 #include <memory>
-#include "behaviortree_ros2/service_clients_list.hpp"
 
 namespace BT
 {
@@ -37,7 +36,6 @@ struct RosNodeParams
 
   // parameter used only by service client and action clients
   std::chrono::milliseconds server_timeout = std::chrono::milliseconds(1000);
-  //ServiceClients<ServiceT> service_clients;
 };
 
 }

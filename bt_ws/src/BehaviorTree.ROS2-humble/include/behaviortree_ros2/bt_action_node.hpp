@@ -24,7 +24,6 @@
 #include "rclcpp_action/rclcpp_action.hpp"
 
 #include "behaviortree_ros2/ros_node_params.hpp"
-#include "behaviortree_ros2/service_clients_list.hpp"
 
 namespace BT
 {
